@@ -1,0 +1,6 @@
+.input-group-append {
+    float: right;
+}
+.input-group input {
+    width: 100%;
+}
