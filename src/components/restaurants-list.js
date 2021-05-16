@@ -60,6 +60,7 @@ function RestaurantsList() {
     };
 
     const refreshList = () => {
+        setLoading(false);
         retrieveRestaurants();
     };
 
