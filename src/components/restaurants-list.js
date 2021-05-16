@@ -64,15 +64,24 @@ function RestaurantsList() {
         retrieveRestaurants();
     };
 
-    const find = (query, by) => {
-        RestaurantData.find(query, by)
-            .then((response) => {
-                console.log(response.data);
-                setRestaurants(response.data.restaurants);
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+    const find = async (query, by) => {
+        try {
+            setLoading(false);
+            const { data } = await RestaurantData.find(query, by);
+            setLoading(true);
+            console.log(data);
+            setRestaurants(data.restaurants);
+        } catch (e) {
+            console.error(e);
+        }
+        // RestaurantData.find(query, by)
+        //     .then((response) => {
+        //         console.log(response.data);
+        //         setRestaurants(response.data.restaurants);
+        //     })
+        //     .catch((e) => {
+        //         console.log(e);
+        //     });
     };
 
     const findByName = () => {
